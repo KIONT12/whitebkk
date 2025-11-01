@@ -107,7 +107,12 @@ export default function Home() {
       total: "Total:",
       placeOrder: "Message on Instagram",
       contactToComplete: "Send us a message with your order",
-      faqs: "FAQs"
+      faqs: "FAQs",
+      
+      // New Location Announcement
+      newLocation: "🎉 New Location Opening Soon! 🎉",
+      newLocationSubtitle: "Stay tuned for our brand new store location",
+      comingSoon: "Coming Soon"
     },
     th: {
       // Header
@@ -193,7 +198,12 @@ export default function Home() {
       total: "รวม:",
       placeOrder: "ส่งข้อความทาง Instagram",
       contactToComplete: "ส่งข้อความพร้อมรายการสั่งซื้อของคุณ",
-      faqs: "คำถามที่พบบ่อย"
+      faqs: "คำถามที่พบบ่อย",
+      
+      // New Location Announcement
+      newLocation: "🎉 สาขาใหม่เปิดเร็วๆ นี้! 🎉",
+      newLocationSubtitle: "ติดตามร้านสาขาใหม่ของเรา",
+      comingSoon: "เร็วๆ นี้"
     },
     zh: {
       // Header
@@ -279,7 +289,12 @@ export default function Home() {
       total: "总计：",
       placeOrder: "Instagram 留言",
       contactToComplete: "发送您的订单消息",
-      faqs: "常见问题"
+      faqs: "常见问题",
+      
+      // New Location Announcement
+      newLocation: "🎉 新店即将开业！🎉",
+      newLocationSubtitle: "敬请期待我们的全新店铺位置",
+      comingSoon: "即将推出"
     },
     ja: {
       // Header
@@ -365,7 +380,12 @@ export default function Home() {
       total: "合計：",
       placeOrder: "Instagram でメッセージ",
       contactToComplete: "注文内容をメッセージで送信",
-      faqs: "よくある質問"
+      faqs: "よくある質問",
+      
+      // New Location Announcement
+      newLocation: "🎉 新店舗オープン予定！🎉",
+      newLocationSubtitle: "新しい店舗の場所をお楽しみに",
+      comingSoon: "近日公開"
     },
     ko: {
       // Header
@@ -451,7 +471,12 @@ export default function Home() {
       total: "합계：",
       placeOrder: "Instagram 메시지",
       contactToComplete: "주문 내용을 메시지로 보내기",
-      faqs: "자주 묻는 질문"
+      faqs: "자주 묻는 질문",
+      
+      // New Location Announcement
+      newLocation: "🎉 새 매장 곧 오픈！🎉",
+      newLocationSubtitle: "새로운 매장 위치를 기대해 주세요",
+      comingSoon: "곧 공개"
     }
   };
 
@@ -1162,6 +1187,108 @@ export default function Home() {
                 <button className="bg-green-800 hover:bg-green-700 px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all font-bold text-white text-base sm:text-lg hover:scale-105 border-2 border-green-600 w-full sm:w-auto">
                   {t.learnMore}
                 </button>
+              </div>
+            </div>
+          </section>
+
+          {/* New Location Announcement Section */}
+          <section className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+            {/* Animated background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 via-emerald-800/80 to-green-900/80 animate-pulse"></div>
+            
+            {/* Floating smoke particles */}
+            <div className="absolute inset-0 pointer-events-none">
+              {[...Array(8)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-16 h-16 bg-green-400/10 rounded-full blur-2xl"
+                  style={{
+                    left: `${(i * 15) % 100}%`,
+                    top: `${(i * 25) % 80}%`,
+                    animation: `smokeRise ${4 + i * 0.5}s ease-out infinite`,
+                    animationDelay: `${i * 0.3}s`
+                  }}
+                ></div>
+              ))}
+            </div>
+            
+            <div className="max-w-4xl mx-auto text-center relative z-10">
+              {/* Main announcement with glow effect */}
+              <div className="bg-gradient-to-br from-green-800/90 to-emerald-900/90 backdrop-blur-md border-4 border-green-500 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl hover:scale-105 transition-all duration-300"
+                style={{
+                  boxShadow: '0 0 60px rgba(34, 197, 94, 0.5), inset 0 0 40px rgba(34, 197, 94, 0.1)'
+                }}
+              >
+                {/* Glowing icon */}
+                <div className="mb-4 sm:mb-6">
+                  <div 
+                    className="inline-block text-6xl sm:text-7xl lg:text-8xl animate-bounce"
+                    style={{
+                      filter: 'drop-shadow(0 0 20px rgba(34, 197, 94, 0.8))',
+                      animation: 'bounce 1s infinite'
+                    }}
+                  >
+                    🏪
+                  </div>
+                </div>
+                
+                {/* Main title with animated glow */}
+                <h2 
+                  className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-green-300 mb-4 sm:mb-6"
+                  style={{
+                    textShadow: '0 0 20px rgba(34, 197, 94, 0.8), 0 0 40px rgba(34, 197, 94, 0.6), 0 0 60px rgba(34, 197, 94, 0.4)',
+                    animation: 'text-glow 2s ease-in-out infinite'
+                  }}
+                >
+                  {t.newLocation}
+                </h2>
+                
+                {/* Subtitle */}
+                <p className="text-xl sm:text-2xl lg:text-3xl text-green-200 mb-6 sm:mb-8 font-medium">
+                  {t.newLocationSubtitle}
+                </p>
+                
+                {/* Coming Soon Badge */}
+                <div className="inline-block">
+                  <div 
+                    className="bg-gradient-to-r from-yellow-500 to-green-500 text-black px-8 sm:px-12 py-3 sm:py-4 rounded-full text-xl sm:text-2xl font-black border-4 border-yellow-400 shadow-xl"
+                    style={{
+                      boxShadow: '0 0 30px rgba(234, 179, 8, 0.8), 0 0 60px rgba(34, 197, 94, 0.6)',
+                      animation: 'pulse-glow 2s ease-in-out infinite'
+                    }}
+                  >
+                    {t.comingSoon}
+                  </div>
+                </div>
+                
+                {/* Decorative smoke wisps */}
+                <div className="mt-6 flex justify-center gap-4">
+                  {[...Array(5)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-3 h-3 sm:w-4 sm:h-4 bg-green-400/60 rounded-full blur-sm"
+                      style={{
+                        animation: `pulse-glow ${2 + i * 0.2}s ease-in-out infinite`,
+                        animationDelay: `${i * 0.1}s`
+                      }}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Social media follow prompt */}
+              <div className="mt-6 sm:mt-8">
+                <p className="text-green-300 text-base sm:text-lg mb-3">
+                  📱 Follow us on Instagram for updates!
+                </p>
+                <a 
+                  href="https://www.instagram.com/whiteashbkk/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-6 sm:px-8 py-3 rounded-lg font-bold text-white text-base sm:text-lg transition-all hover:scale-105 shadow-lg"
+                >
+                  📷 @whiteashbkk
+                </a>
               </div>
             </div>
           </section>
