@@ -60,7 +60,9 @@ export default function NewLocation() {
       ekkamaiNowOpen: "Ekkamai Location (NOW OPEN!)",
       originalLocation: "Original Location",
       daily: "Daily: 11 AM - 12 AM",
-      newLocationAddress: "New Location Address"
+      newLocationAddress: "New Location Address",
+      storeTourTitle: "Step inside the lounge",
+      storeTourDescription: "Press play to take a quick walk-through of our freshly opened Ekkamai shop."
     },
     th: {
       nowOpen: "เปิดแล้ว",
@@ -85,7 +87,9 @@ export default function NewLocation() {
       ekkamaiNowOpen: "สาขาเอกมัย (เปิดแล้ว!)",
       originalLocation: "สาขาเดิม",
       daily: "ทุกวัน: 11:00 - 24:00 น.",
-      newLocationAddress: "ที่อยู่สาขาใหม่"
+      newLocationAddress: "ที่อยู่สาขาใหม่",
+      storeTourTitle: "ชมบรรยากาศภายในร้าน",
+      storeTourDescription: "กดเล่นเพื่อชมบรรยากาศภายในร้านสาขาเอกมัยที่เพิ่งเปิดใหม่ของเรา"
     },
     zh: {
       nowOpen: "现已开业",
@@ -110,7 +114,9 @@ export default function NewLocation() {
       ekkamaiNowOpen: "Ekkamai分店（现已开业！）",
       originalLocation: "原分店",
       daily: "每日：11:00 - 24:00",
-      newLocationAddress: "新店地址"
+      newLocationAddress: "新店地址",
+      storeTourTitle: "走进我们的休闲空间",
+      storeTourDescription: "点击播放，快速参观我们全新的 Ekkamai 店面。"
     },
     ja: {
       nowOpen: "営業中",
@@ -135,7 +141,9 @@ export default function NewLocation() {
       ekkamaiNowOpen: "エカマイ店（営業中！）",
       originalLocation: "本店",
       daily: "毎日：11:00 - 24:00",
-      newLocationAddress: "新店舗住所"
+      newLocationAddress: "新店舗住所",
+      storeTourTitle: "店内ツアーをご覧ください",
+      storeTourDescription: "再生ボタンを押して、オープンしたばかりのエカマイ店を覗いてみましょう。"
     },
     ko: {
       nowOpen: "영업 중",
@@ -160,7 +168,9 @@ export default function NewLocation() {
       ekkamaiNowOpen: "에까마이 매장 (영업 중!)",
       originalLocation: "본점",
       daily: "매일: 11:00 - 24:00",
-      newLocationAddress: "새 매장 주소"
+      newLocationAddress: "새 매장 주소",
+      storeTourTitle: "라운지를 둘러보세요",
+      storeTourDescription: "재생 버튼을 눌러 새롭게 오픈한 에까마이 매장을 미리 만나보세요."
     }
   };
 
@@ -843,6 +853,40 @@ export default function NewLocation() {
               }}
             >
               ✅ {t.nowOpen} ✅
+            </div>
+          </div>
+
+          {/* Store Tour Video */}
+          <div className="max-w-4xl mx-auto w-full mb-8">
+            <div className="bg-gradient-to-br from-green-900/60 via-black/60 to-green-950/70 border-2 border-green-500/60 rounded-[2rem] p-4 sm:p-6 shadow-[0_0_45px_rgba(34,197,94,0.35)]">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.3em] text-green-400 mb-1">🎥</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-green-100">
+                    {t.storeTourTitle}
+                  </h3>
+                </div>
+                <p className="text-green-200 text-xs sm:text-sm max-w-md">
+                  {t.storeTourDescription}
+                </p>
+              </div>
+              <div className="relative bg-gradient-to-br from-green-900 via-black to-green-900 rounded-[1.75rem] p-3 sm:p-4 shadow-inner">
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-24 h-2 rounded-full bg-green-500/60 blur-sm"></div>
+                <div className="absolute inset-x-10 -bottom-4 h-6 bg-black/60 rounded-b-[2rem] blur-sm"></div>
+                <video
+                  src="/Sure_heres_a_202511120840_c7sbc.mp4"
+                  poster="/PHOTO-2025-11-11-18-41-12.jpg"
+                  controls
+                  playsInline
+                  className="w-full rounded-[1.25rem] border-[6px] border-black/70 shadow-[0_15px_35px_rgba(0,0,0,0.45)] bg-black object-cover"
+                >
+                  Your browser does not support the video tag.
+                </video>
+                <div className="absolute left-6 right-6 bottom-2 flex justify-between opacity-60">
+                  <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                  <div className="w-4 h-4 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
             </div>
           </div>
 
