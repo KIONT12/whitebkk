@@ -9,17 +9,13 @@ export default function Home() {
   const [showCart, setShowCart] = useState(false);
   const [language, setLanguage] = useState('en'); // 'en', 'th', 'zh', 'ja', 'ko'
   const [showLangMenu, setShowLangMenu] = useState(false);
-  const [cursorTrail, setCursorTrail] = useState([]);
-
-  // Cursor trail effect for smoky cursive trails
-  const handleMouseMove = (e) => {
-    const newTrail = {
-      x: e.clientX,
-      y: e.clientY,
-      id: Date.now() + Math.random()
-    };
-    setCursorTrail(prev => [...prev.slice(-20), newTrail]);
-  };
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+    optIn: false,
+  });
+  const [contactSubmitted, setContactSubmitted] = useState(false);
 
   // Translation object
   const translations = {
@@ -82,10 +78,18 @@ export default function Home() {
       // Contact Section
       getInTouch: "Get In Touch",
       contactDescription: "Have questions? Our friendly staff is here to help!",
-      callUs: "Call Us",
+      callUs: "Line App",
       visitUs: "Visit Us",
       openDaily: "Open Daily",
       daysAWeek: "7 Days a Week",
+      contactFormTitle: "Let's Stay in Touch",
+      contactFormSubtitle: "Send us a message and our team will get back to you soon.",
+      contactFormName: "Name",
+      contactFormEmail: "Email",
+      contactFormMessage: "Message",
+      contactFormSubmit: "Send Message",
+      newsletterOptIn: "Notify me about new drops & promos",
+      contactFormSuccess: "Thank you! We'll be in touch shortly.",
       
       // Footer
       footerDescription: "Premium Wholesale & Retail Cannabis Flower Specialist in Nonthaburi.",
@@ -110,9 +114,9 @@ export default function Home() {
       faqs: "FAQs",
       
       // New Location Announcement
-      newLocation: "🎉 New Location Opening Soon! 🎉",
-      newLocationSubtitle: "Stay tuned for our brand new store location",
-      comingSoon: "Coming Soon"
+      newLocation: "🎉 New Location NOW OPEN! 🎉",
+      newLocationSubtitle: "Click below to visit the new shop website",
+      comingSoon: "Visit now"
     },
     th: {
       // Header
@@ -173,10 +177,18 @@ export default function Home() {
       // Contact Section
       getInTouch: "ติดต่อเรา",
       contactDescription: "มีคำถาม? พนักงานที่เป็นมิตรของเราพร้อมช่วยเหลือคุณ!",
-      callUs: "โทรหาเรา",
+      callUs: "LINE App",
       visitUs: "มาเยี่ยมเรา",
       openDaily: "เปิดทุกวัน",
       daysAWeek: "7 วันต่อสัปดาห์",
+      contactFormTitle: "ติดต่อเราง่ายๆ",
+      contactFormSubtitle: "ส่งข้อความถึงเรา ทีมงานจะติดต่อกลับอย่างรวดเร็ว",
+      contactFormName: "ชื่อ",
+      contactFormEmail: "อีเมล",
+      contactFormMessage: "ข้อความ",
+      contactFormSubmit: "ส่งข้อความ",
+      newsletterOptIn: "แจ้งฉันเมื่อมีสินค้าและโปรโมชั่นใหม่",
+      contactFormSuccess: "ขอบคุณ! เราจะติดต่อกลับเร็วๆ นี้",
       
       // Footer
       footerDescription: "ผู้เชี่ยวชาญกัญชาดอกขายส่งและขายปลีกพรีเมียมในนนทบุรี",
@@ -201,9 +213,9 @@ export default function Home() {
       faqs: "คำถามที่พบบ่อย",
       
       // New Location Announcement
-      newLocation: "🎉 สาขาใหม่เปิดเร็วๆ นี้! 🎉",
-      newLocationSubtitle: "ติดตามร้านสาขาใหม่ของเรา",
-      comingSoon: "เร็วๆ นี้"
+      newLocation: "🎉 สาขาใหม่เปิดแล้ว! 🎉",
+      newLocationSubtitle: "คลิกเพื่อเยี่ยมชมเว็บไซต์ร้านใหม่",
+      comingSoon: "เยี่ยมชมเลย"
     },
     zh: {
       // Header
@@ -263,11 +275,19 @@ export default function Home() {
       
       // Contact Section
       getInTouch: "联系我们",
-      contactDescription: "有问题吗？我们友好的员工随时为您提供帮助！",
-      callUs: "致电我们",
+      contactDescription: "有问题吗？我们友好的团队随时为您提供帮助！",
+      callUs: "LINE App",
       visitUs: "访问我们",
       openDaily: "每日营业",
       daysAWeek: "每周 7 天",
+      contactFormTitle: "保持联系",
+      contactFormSubtitle: "给我们留言，我们会尽快回复您。",
+      contactFormName: "姓名",
+      contactFormEmail: "邮箱",
+      contactFormMessage: "留言",
+      contactFormSubmit: "发送留言",
+      newsletterOptIn: "有新品和优惠时通知我",
+      contactFormSuccess: "谢谢！我们会尽快联系您。",
       
       // Footer
       footerDescription: "暖武里优质批发和零售大麻花专家。",
@@ -292,9 +312,9 @@ export default function Home() {
       faqs: "常见问题",
       
       // New Location Announcement
-      newLocation: "🎉 新店即将开业！🎉",
-      newLocationSubtitle: "敬请期待我们的全新店铺位置",
-      comingSoon: "即将推出"
+      newLocation: "🎉 新店现已开业！🎉",
+      newLocationSubtitle: "点击下方访问新店官网",
+      comingSoon: "立即访问"
     },
     ja: {
       // Header
@@ -354,11 +374,19 @@ export default function Home() {
       
       // Contact Section
       getInTouch: "お問い合わせ",
-      contactDescription: "ご質問がありますか？私たちのフレンドリーなスタッフがお手伝いします！",
-      callUs: "お電話ください",
+      contactDescription: "ご質問がありますか？フレンドリーなスタッフがサポートします！",
+      callUs: "LINE App",
       visitUs: "ご来店ください",
       openDaily: "毎日営業",
       daysAWeek: "週7日",
+      contactFormTitle: "お気軽にご連絡ください",
+      contactFormSubtitle: "メッセージを送っていただければ、スタッフが折り返しご連絡します。",
+      contactFormName: "お名前",
+      contactFormEmail: "メールアドレス",
+      contactFormMessage: "メッセージ",
+      contactFormSubmit: "送信する",
+      newsletterOptIn: "新商品とプロモ情報を受け取る",
+      contactFormSuccess: "ありがとうございます！追ってご連絡します。",
       
       // Footer
       footerDescription: "ノンタブリーのプレミアム卸売・小売カンナビスフラワー専門店。",
@@ -383,9 +411,9 @@ export default function Home() {
       faqs: "よくある質問",
       
       // New Location Announcement
-      newLocation: "🎉 新店舗オープン予定！🎉",
-      newLocationSubtitle: "新しい店舗の場所をお楽しみに",
-      comingSoon: "近日公開"
+      newLocation: "🎉 新店舗オープン！🎉",
+      newLocationSubtitle: "下のリンクから新店舗サイトへアクセス",
+      comingSoon: "今すぐ訪問"
     },
     ko: {
       // Header
@@ -445,11 +473,19 @@ export default function Home() {
       
       // Contact Section
       getInTouch: "문의하기",
-      contactDescription: "질문이 있으신가요? 친절한 직원이 도와드립니다!",
-      callUs: "전화하기",
+      contactDescription: "궁금한 점이 있으신가요? 친절한 스태프가 도와드립니다!",
+      callUs: "LINE App",
       visitUs: "방문하기",
       openDaily: "매일 영업",
       daysAWeek: "주 7일",
+      contactFormTitle: "언제든지 연락주세요",
+      contactFormSubtitle: "메시지를 남겨주시면 빠르게 답변드릴게요.",
+      contactFormName: "이름",
+      contactFormEmail: "이메일",
+      contactFormMessage: "메시지",
+      contactFormSubmit: "메시지 보내기",
+      newsletterOptIn: "신상품과 프로모션 소식 알려주세요",
+      contactFormSuccess: "감사합니다! 곧 연락드릴게요.",
       
       // Footer
       footerDescription: "논타부리의 프리미엄 도매 및 소매 대마초 꽃 전문점.",
@@ -474,9 +510,9 @@ export default function Home() {
       faqs: "자주 묻는 질문",
       
       // New Location Announcement
-      newLocation: "🎉 새 매장 곧 오픈！🎉",
-      newLocationSubtitle: "새로운 매장 위치를 기대해 주세요",
-      comingSoon: "곧 공개"
+      newLocation: "🎉 새 매장 오픈 완료！🎉",
+      newLocationSubtitle: "아래 링크를 눌러 새 매장 사이트 방문",
+      comingSoon: "지금 방문"
     }
   };
 
@@ -536,6 +572,26 @@ export default function Home() {
 
   const getCartCount = () => {
     return cart.reduce((count, item) => count + item.quantity, 0);
+  };
+
+  const handleContactChange = (field, value) => {
+    setContactForm((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    setContactSubmitted(true);
+    // TODO: connect to backend/email service
+    setContactForm({
+      name: "",
+      email: "",
+      message: "",
+      optIn: false,
+    });
+    setTimeout(() => setContactSubmitted(false), 4000);
   };
 
   const products = [
@@ -636,16 +692,10 @@ export default function Home() {
   return (
     <div 
       className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-green-950 text-white relative overflow-x-hidden"
-      onMouseMove={handleMouseMove}
-      style={{ cursor: 'none' }}
     >
       {/* Custom Styles */}
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400;700&display=swap');
-        
-        * {
-          cursor: none !important;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
         
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
@@ -717,6 +767,91 @@ export default function Home() {
           50% {
             text-shadow: 0 0 10px rgba(34, 197, 94, 1), 0 0 20px rgba(234, 179, 8, 1), 0 0 30px rgba(34, 197, 94, 0.5);
           }
+        }
+
+        @keyframes mascotFloat {
+          0%, 100% {
+            transform: translateY(0) scale(1) rotate(-1deg);
+          }
+          50% {
+            transform: translateY(-6px) scale(1.04) rotate(1deg);
+          }
+        }
+
+        @keyframes mascotGlow {
+          0%, 100% {
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.45)) drop-shadow(0 0 22px rgba(34, 197, 94, 0.35));
+          }
+          50% {
+            filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 30px rgba(234, 179, 8, 0.55));
+          }
+        }
+
+        @keyframes sparkleFloat {
+          0% {
+            opacity: 0;
+            transform: translateY(6px) scale(0.8) rotate(0deg);
+          }
+          25% {
+            opacity: 0.7;
+          }
+          50% {
+            opacity: 0.9;
+            transform: translateY(-6px) scale(1) rotate(5deg);
+          }
+          75% {
+            opacity: 0.4;
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-14px) scale(1.1) rotate(-5deg);
+          }
+        }
+
+        .mascot-alive {
+          animation: mascotFloat 6s ease-in-out infinite, mascotGlow 5s ease-in-out infinite;
+          transform-origin: center bottom;
+        }
+
+        .mascot-sparkles {
+          pointer-events: none;
+        }
+
+        .mascot-sparkles .mascot-sparkle {
+          position: absolute;
+          font-size: 1.4rem;
+          opacity: 0;
+          animation: sparkleFloat 7s linear infinite;
+        }
+
+        .mascot-sparkles .mascot-sparkle:nth-child(1) {
+          top: 12%;
+          left: 18%;
+          animation-delay: 0s;
+        }
+
+        .mascot-sparkles .mascot-sparkle:nth-child(2) {
+          top: 22%;
+          right: 15%;
+          animation-delay: 1.8s;
+        }
+
+        .mascot-sparkles .mascot-sparkle:nth-child(3) {
+          bottom: 18%;
+          left: 22%;
+          animation-delay: 3.2s;
+        }
+
+        .mascot-sparkles .mascot-sparkle:nth-child(4) {
+          bottom: 8%;
+          right: 20%;
+          animation-delay: 4.6s;
+        }
+
+        .mascot-sparkles .mascot-sparkle:nth-child(5) {
+          top: 40%;
+          left: 48%;
+          animation-delay: 2.5s;
         }
         
         @keyframes fadeIn {
@@ -793,43 +928,37 @@ export default function Home() {
           font-weight: 700;
           text-shadow: 0 0 20px rgba(34, 197, 94, 0.5), 0 0 40px rgba(34, 197, 94, 0.3);
         }
+        
+        @font-face {
+          font-family: 'BigPartyC2';
+          src: url('/bigpartyc2-font/Bigpartyc2blue-9Yy0K.ttf') format('truetype');
+          font-display: swap;
+        }
+        
+        body {
+          font-family: 'Poppins', sans-serif;
+          letter-spacing: 0.01em;
+          text-shadow: none;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'BigPartyC2', cursive !important;
+          letter-spacing: 0.02em;
+          text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        }
+        
+        button, a {
+          font-family: 'Poppins', sans-serif !important;
+          letter-spacing: 0.015em;
+          text-shadow: none;
+        }
+        
+        p, span, li, label, input, textarea {
+          font-family: 'Poppins', sans-serif !important;
+          font-size: 1em;
+          text-shadow: none;
+        }
       `}</style>
-
-      {/* Cursor Trails - Smoky Cursive Effect */}
-      {cursorTrail.map((trail, index) => (
-        <div
-          key={trail.id}
-          className="fixed pointer-events-none z-[200]"
-          style={{
-            left: trail.x,
-            top: trail.y,
-            transform: 'translate(-50%, -50%)',
-            opacity: (index + 1) / cursorTrail.length * 0.6,
-            transition: 'opacity 0.5s ease-out'
-          }}
-        >
-          <div 
-            className="w-2 h-2 bg-green-400/60 rounded-full blur-md"
-            style={{
-              animation: 'smokeRise 2s ease-out forwards',
-              boxShadow: '0 0 10px rgba(34, 197, 94, 0.5)'
-            }}
-          ></div>
-        </div>
-      ))}
-
-      {/* Main Custom Cursor */}
-      <div 
-        className="fixed pointer-events-none z-[201]"
-        style={{
-          left: cursorTrail[cursorTrail.length - 1]?.x || 0,
-          top: cursorTrail[cursorTrail.length - 1]?.y || 0,
-          transform: 'translate(-50%, -50%)',
-          transition: 'left 0.05s, top 0.05s'
-        }}
-      >
-        <div className="w-4 h-4 border-2 border-green-400 rounded-full animate-pulse"></div>
-      </div>
 
       {/* Ambient Smoke Background */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -1248,17 +1377,40 @@ export default function Home() {
                   {t.newLocationSubtitle}
                 </p>
                 
-                {/* Coming Soon Badge */}
-                <div className="inline-block">
-                  <div 
-                    className="bg-gradient-to-r from-yellow-500 to-green-500 text-black px-8 sm:px-12 py-3 sm:py-4 rounded-full text-xl sm:text-2xl font-black border-4 border-yellow-400 shadow-xl"
+                {/* Store Sign Image - Clickable */}
+                <div className="mb-6 sm:mb-8 flex flex-col items-center gap-4">
+                  <a 
+                    href="/new-location"
+                    className="group relative w-full max-w-2xl aspect-video rounded-2xl overflow-hidden border-4 border-green-500 shadow-2xl hover:scale-105 transition-transform duration-500 cursor-pointer block"
                     style={{
-                      boxShadow: '0 0 30px rgba(234, 179, 8, 0.8), 0 0 60px rgba(34, 197, 94, 0.6)',
-                      animation: 'pulse-glow 2s ease-in-out infinite'
+                      boxShadow: '0 0 40px rgba(34, 197, 94, 0.6), 0 0 80px rgba(34, 197, 94, 0.4)'
                     }}
                   >
-                    {t.comingSoon}
-                  </div>
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
+                      style={{
+                        backgroundImage: "url('/PHOTO-2025-11-11-18-41-12.jpg')"
+                      }}
+                      aria-hidden="true"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute bottom-4 left-0 right-0 text-center">
+                      <p className="text-white text-lg sm:text-xl font-bold px-4"
+                         style={{
+                           textShadow: '0 2px 10px rgba(0, 0, 0, 0.8)'
+                         }}
+                      >
+                        🌿 Visit the Ekkamai shop website 🌿
+                      </p>
+                    </div>
+                  </a>
+                  
+                  <a 
+                    href="/new-location"
+                    className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-lg sm:text-xl font-semibold border border-green-400 shadow-xl transition-all duration-300 hover:scale-105"
+                  >
+                    🌐 Visit the New Shop →
+                  </a>
                 </div>
                 
                 {/* Decorative smoke wisps */}
@@ -1463,15 +1615,22 @@ export default function Home() {
                     <p className="text-green-300 text-center font-bold mb-3">
                       {t.address}
                     </p>
-                    <p className="text-green-200 text-center text-sm">
-                      Soi Rattanathibech 38, Tambon Bang Kraso
-                    </p>
-                    <p className="text-green-200 text-center text-sm">
-                      Mueang Nonthaburi District
-                    </p>
-                    <p className="text-green-200 text-center text-sm mb-3">
-                      Nonthaburi 11000, Thailand
-                    </p>
+                    <a 
+                      href="https://www.google.com/maps/search/?api=1&query=Soi+Rattanathibech+38,+Tambon+Bang+Kraso,+Mueang+Nonthaburi+District,+Nonthaburi+11000,+Thailand" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block text-green-200 text-center text-sm hover:text-green-400 transition-colors cursor-pointer"
+                    >
+                      <p className="text-sm">
+                        Soi Rattanathibech 38, Tambon Bang Kraso
+                      </p>
+                      <p className="text-sm">
+                        Mueang Nonthaburi District
+                      </p>
+                      <p className="text-sm mb-3">
+                        Nonthaburi 11000, Thailand
+                      </p>
+                    </a>
                     <p className="text-green-300 text-center font-bold mb-2">
                       {t.phone}
                     </p>
@@ -1590,6 +1749,114 @@ export default function Home() {
                   ></div>
                 </div>
               </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 mt-8">
+                <div className="bg-green-900/50 border-2 border-green-600/60 rounded-2xl p-6 sm:p-8 shadow-2xl">
+                  <h3 className="text-2xl font-bold text-green-200 mb-3">{t.contactFormTitle}</h3>
+                  <p className="text-green-300 text-sm sm:text-base mb-6">
+                    {t.contactFormSubtitle}
+                  </p>
+                  <form className="space-y-4" onSubmit={handleContactSubmit}>
+                    <div>
+                      <label htmlFor="contact-name" className="block text-sm font-semibold text-green-200 mb-2">
+                        {t.contactFormName}
+                      </label>
+                      <input
+                        id="contact-name"
+                        type="text"
+                        value={contactForm.name}
+                        onChange={(e) => handleContactChange("name", e.target.value)}
+                        required
+                        className="w-full rounded-xl bg-black/40 border border-green-600/60 px-4 py-3 text-green-100 placeholder-green-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all"
+                        placeholder="John Doe"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-email" className="block text-sm font-semibold text-green-200 mb-2">
+                        {t.contactFormEmail}
+                      </label>
+                      <input
+                        id="contact-email"
+                        type="email"
+                        value={contactForm.email}
+                        onChange={(e) => handleContactChange("email", e.target.value)}
+                        required
+                        className="w-full rounded-xl bg-black/40 border border-green-600/60 px-4 py-3 text-green-100 placeholder-green-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all"
+                        placeholder="you@email.com"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="contact-message" className="block text-sm font-semibold text-green-200 mb-2">
+                        {t.contactFormMessage}
+                      </label>
+                      <textarea
+                        id="contact-message"
+                        value={contactForm.message}
+                        onChange={(e) => handleContactChange("message", e.target.value)}
+                        required
+                        rows={4}
+                        className="w-full rounded-xl bg-black/40 border border-green-600/60 px-4 py-3 text-green-100 placeholder-green-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all resize-none"
+                        placeholder="Tell us how we can help..."
+                      />
+                    </div>
+                    <label className="flex items-center gap-2 text-sm text-green-300">
+                      <input
+                        type="checkbox"
+                        checked={contactForm.optIn}
+                        onChange={(e) => handleContactChange("optIn", e.target.checked)}
+                        className="w-4 h-4 text-green-500 border-green-500 rounded focus:ring-green-400"
+                      />
+                      {t.newsletterOptIn}
+                    </label>
+                    <button
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-semibold py-3 rounded-xl border border-green-400 shadow-lg transition-all hover:scale-[1.02]"
+                    >
+                      {t.contactFormSubmit}
+                    </button>
+                    {contactSubmitted && (
+                      <p className="text-green-200 text-sm bg-green-700/40 border border-green-400/60 rounded-xl px-4 py-3 text-center">
+                        {t.contactFormSuccess}
+                      </p>
+                    )}
+                  </form>
+                </div>
+                <div className="bg-green-900/40 border-2 border-green-600/60 rounded-2xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-2xl font-bold text-green-200 mb-4">{t.visitUs}</h3>
+                    <p className="text-green-300 text-sm sm:text-base mb-4">
+                      🕒 {t.openDaily} • {t.daysAWeek}
+                    </p>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=WhiteAsh+BKK+Store+at+Ekkamai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-green-700 hover:bg-green-600 text-white font-semibold transition-all border border-green-400 hover:scale-105"
+                    >
+                      🗺️ {t.visitUs}
+                    </a>
+                    <div className="mt-6 space-y-3 text-green-200 text-sm sm:text-base">
+                      <p>📍 WhiteAsh BKK Store at Ekkamai</p>
+                      <p>📍 Soi Rattanathibech 38, Nonthaburi 11000</p>
+                      <a
+                        href="https://line.me/R/ti/p/@whiteashbkk"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-green-200 hover:text-green-400 transition-colors"
+                      >
+                        💬 Line App: @whiteashbkk
+                      </a>
+                      <p>✉️ hello@whiteashbkk.com</p>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <h4 className="text-lg font-semibold text-green-200 mb-2">Hours</h4>
+                    <p className="text-green-300 text-sm">
+                      Nonthaburi: 11:00 – 00:00<br />
+                      Ekkamai: 11:00 – 00:00
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
       </main>
@@ -1641,16 +1908,54 @@ export default function Home() {
               <div>
                 <h4 className="text-lg font-bold text-green-400 mb-4">{t.connect}</h4>
                 <div className="space-y-2 text-green-200">
-                  <p>📱 <a href="tel:0618790582" className="hover:text-green-400 transition-colors">061 879 0582</a></p>
-                  <p className="text-sm">📍 Soi Rattanathibech 38, Tambon Bang Kraso</p>
-                  <p className="text-sm">Nonthaburi 11000, Thailand</p>
+                  <a
+                    href="https://line.me/R/ti/p/@whiteashbkk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 hover:text-green-400 transition-colors"
+                  >
+                    💬 LINE: @whiteashbkk
+                  </a>
+                  <a 
+                    href="https://www.google.com/maps/search/?api=1&query=Soi+Rattanathibech+38,+Tambon+Bang+Kraso,+Nonthaburi+11000,+Thailand" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-sm hover:text-green-400 transition-colors cursor-pointer"
+                  >
+                    <p className="text-sm">📍 Soi Rattanathibech 38, Tambon Bang Kraso</p>
+                    <p className="text-sm">Nonthaburi 11000, Thailand</p>
+                  </a>
                   <p className="text-sm text-green-300">⏰ {t.daily} 11 AM - 12 AM</p>
-                  <p className="text-sm text-green-300">{t.deliveryAvailable}</p>
+                  <p className="text-sm text-green-300">✉️ hello@whiteashbkk.com</p>
                 </div>
                 <div className="flex space-x-4 mt-4">
-                  <button className="text-2xl hover:scale-110 transition-transform">📘</button>
-                  <button className="text-2xl hover:scale-110 transition-transform">📷</button>
-                  <button className="text-2xl hover:scale-110 transition-transform">🐦</button>
+                  <a
+                    href="https://instagram.com/whiteashbkk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl hover:scale-110 transition-transform"
+                    aria-label="Instagram"
+                  >
+                    📷
+                  </a>
+                  <a
+                    href="https://line.me/R/ti/p/@whiteashbkk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl hover:scale-110 transition-transform"
+                    aria-label="Line App"
+                  >
+                    💬
+                  </a>
+                  <a
+                    href="https://maps.google.com/?q=WhiteAsh+BKK"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl hover:scale-110 transition-transform"
+                    aria-label="Google Maps"
+                  >
+                    🗺️
+                  </a>
                 </div>
               </div>
             </div>
