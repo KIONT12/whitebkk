@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function NewLocation() {
   const [email, setEmail] = useState("");
@@ -1287,12 +1288,12 @@ export default function NewLocation() {
 
         {/* Back to Main Site */}
         <div className="text-center">
-          <a
+          <Link
             href="/"
             className="inline-block px-4 py-2 bg-green-800/80 text-green-300 rounded-full font-bold text-xs hover:bg-green-700/80 transition-all duration-300 border-2 border-green-600"
           >
             ← {t.backToMain}
-          </a>
+          </Link>
         </div>
 
         {/* Current Location Info */}
