@@ -518,6 +518,18 @@ export default function NewLocation() {
 
             {/* Right Side - Language & Cart */}
             <div className="flex items-center gap-2 sm:gap-3">
+              <Link
+                href="/"
+                className="inline-flex sm:hidden items-center gap-1 bg-green-700/80 hover:bg-green-600 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded-full border border-green-400 shadow-md transition-transform hover:scale-105"
+              >
+                ←
+              </Link>
+              <Link
+                href="/"
+                className="hidden sm:inline-flex items-center gap-2 bg-green-700/80 hover:bg-green-600 text-white text-xs sm:text-sm font-semibold px-3 py-2 rounded-full border border-green-400 shadow-md transition-transform hover:scale-105"
+              >
+                ← Back to Home
+              </Link>
               
               {/* Language Switcher */}
               <div className="relative">
@@ -1255,90 +1267,69 @@ export default function NewLocation() {
           </div>
         </div>
 
-        {/* Social Media & Contact */}
-        <div className="text-center mb-6">
-          <p className="text-sm text-green-300 mb-3">
-            {t.followUs}
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            <a
-              href="https://instagram.com/whiteashbkk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full font-bold text-xs hover:scale-110 transition-transform duration-300 border-2 border-pink-400"
-              style={{
-                boxShadow: '0 0 15px rgba(236, 72, 153, 0.6)'
-              }}
-            >
-              📷 Instagram
-            </a>
-            <a
-              href="https://line.me/R/ti/p/@whiteashbkk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-700 text-white rounded-full font-bold text-xs hover:scale-110 transition-transform duration-300 border-2 border-green-400"
-              style={{
-                boxShadow: '0 0 15px rgba(34, 197, 94, 0.6)'
-              }}
-            >
-              💬 {t.callUs}
-            </a>
-          </div>
-        </div>
-
-        {/* Back to Main Site */}
-        <div className="text-center">
-          <Link
-            href="/"
-            className="inline-block px-4 py-2 bg-green-800/80 text-green-300 rounded-full font-bold text-xs hover:bg-green-700/80 transition-all duration-300 border-2 border-green-600"
-          >
-            ← {t.backToMain}
-          </Link>
-        </div>
-
-        {/* Current Location Info */}
-        <div className="mt-6 max-w-xl mx-auto">
-          <div className="bg-green-900/25 border-2 border-green-600/50 rounded-xl p-4 text-center">
-            <p className="text-base font-bold text-green-300 mb-3">📍 {t.ourLocations}</p>
-            <div className="space-y-3 text-sm">
-              <div className="border-b border-green-700 pb-3">
-                <p className="text-sm font-bold text-green-400 mb-1">✅ {t.ekkamaiNowOpen}</p>
-                <p className="text-green-300 text-xs">WhiteAsh BKK Store at Ekkamai</p>
-                <p className="text-green-400 text-xs">{t.daily}</p>
-              </div>
+        {/* Connect & Location Summary */}
+        <section className="mt-10 px-2">
+          <div className="max-w-5xl mx-auto grid gap-6 lg:grid-cols-3">
+            <div className="bg-green-900/45 border-2 border-green-500/60 rounded-2xl p-6 sm:p-8 shadow-2xl flex flex-col gap-4">
               <div>
-                <p className="text-sm font-bold text-green-400 mb-1">✅ {t.originalLocation}</p>
-                <p className="text-green-300 text-xs">Soi Rattanathibech 38, Nonthaburi 11000</p>
-                <p className="text-green-400 text-xs">{t.daily}</p>
+                <p className="text-sm uppercase tracking-[0.3em] text-green-400 mb-2">Connect</p>
+                <h4 className="text-xl sm:text-2xl font-bold text-green-100">{t.followUs}</h4>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href="https://instagram.com/whiteashbkk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 min-w-[9rem] text-center px-4 py-2 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 text-white rounded-full font-semibold text-sm hover:scale-105 transition-transform duration-300 border border-pink-200/60 shadow-lg"
+                >
+                  📷 Instagram
+                </a>
+              </div>
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-green-800/80 text-green-100 rounded-full font-semibold text-sm hover:bg-green-700/80 transition-all duration-300 border border-green-500 shadow-lg"
+              >
+                ← {t.backToMain}
+              </Link>
+            </div>
+
+            <div className="bg-green-900/30 border-2 border-green-500/60 rounded-2xl p-6 sm:p-8 shadow-2xl">
+              <p className="text-sm uppercase tracking-[0.3em] text-green-400 mb-2">Locations</p>
+              <h4 className="text-xl sm:text-2xl font-bold text-green-100 mb-5">{t.ourLocations}</h4>
+              <div className="space-y-5 text-sm sm:text-base">
+                <div className="rounded-xl border border-green-500/50 bg-black/30 px-4 py-3">
+                  <p className="text-green-200 font-semibold mb-1">✅ {t.ekkamaiNowOpen}</p>
+                  <p className="text-green-300 text-sm">WhiteAsh BKK Store at Ekkamai</p>
+                  <p className="text-green-400 text-xs mt-1">{t.daily}</p>
+                </div>
+                <div className="rounded-xl border border-green-500/50 bg-black/30 px-4 py-3">
+                  <p className="text-green-200 font-semibold mb-1">✅ {t.originalLocation}</p>
+                  <p className="text-green-300 text-sm">Soi Rattanathibech 38, Nonthaburi 11000</p>
+                  <p className="text-green-400 text-xs mt-1">{t.daily}</p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* New Location Address with Google Maps - AT BOTTOM */}
-        <div className="mt-6 max-w-xl mx-auto mb-8">
-          <div className="bg-green-950/30 border-2 border-green-500/50 rounded-xl p-4">
-            <div className="text-center">
-              <h3 className="text-lg font-bold text-green-300 mb-2">
-                📍 {t.newLocationAddress}
-              </h3>
-               <p className="text-base text-green-200 mb-1 font-medium">
-                 WhiteAsh BKK Store at Ekkamai
-               </p>
+            <div className="bg-green-900/30 border-2 border-green-500/60 rounded-2xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between">
+              <div>
+                <p className="text-sm uppercase tracking-[0.3em] text-green-400 mb-2">Visit</p>
+                <h4 className="text-xl sm:text-2xl font-bold text-green-100 mb-4">{t.newLocationAddress}</h4>
+                <p className="text-green-300 text-sm mb-4">
+                  WhiteAsh BKK Store at Ekkamai<br />
+                  ✉️ hello@whiteashbkk.com
+                </p>
+              </div>
               <a
                 href="https://www.google.com/maps/place/Whiteashbkk+Smoking+Lounge+(ekkamai)/@13.7146165,100.5823503,17z/data=!4m6!3m5!1s0x30e29f4c843edc41:0x8b99dfdc68305430!8m2!3d13.7146109!4d100.5814546!16s%2Fg%2F11zjp70l6j?entry=ttu&g_ep=EgoyMDI1MTEwNC4xIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full font-bold text-sm hover:scale-110 transition-transform duration-300 border-2 border-blue-400"
-                style={{
-                  boxShadow: '0 0 20px rgba(37, 99, 235, 0.6)'
-                }}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-full border border-blue-300/60 shadow-lg hover:scale-105 transition-transform"
               >
                 🗺️ View on Google Maps
               </a>
             </div>
           </div>
-        </div>
+        </section>
       </div>
       {/* Enlarged Image Modal */}
       {enlargedImage && (
