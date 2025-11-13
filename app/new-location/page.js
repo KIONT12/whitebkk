@@ -786,6 +786,9 @@ export default function NewLocation() {
                 muted
                 playsInline
                 preload="auto"
+                disablePictureInPicture
+                controlsList="nodownload nofullscreen noremoteplayback"
+                onContextMenu={(e) => e.preventDefault()}
                 onLoadedData={() => setHeroVideoReady(true)}
                 onError={() => {
                   if (heroVideoSrc === "/Sure_heres_a_202511120840_c7sbc.mp4") {
@@ -795,6 +798,7 @@ export default function NewLocation() {
                   }
                 }}
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out ${heroVideoReady ? 'opacity-100' : 'opacity-0'}`}
+                style={{ pointerEvents: 'none' }}
               >
                 <source src={heroVideoSrc} type="video/mp4" />
                 Your browser does not support the video tag.
