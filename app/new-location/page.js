@@ -716,10 +716,11 @@ export default function NewLocation() {
       {/* Main Content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 sm:pt-18 lg:pt-20">
         
-          {/* Store Name + Logo */}
-          <div className="mb-4 text-center flex flex-col items-center gap-3">
+        {/* Hero: Store Name + Looping Tour Video */}
+        <div className="w-full max-w-5xl mx-auto mb-10">
+          <div className="text-center flex flex-col items-center gap-4">
             <div className="flex items-center gap-3 sm:gap-4">
-              <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-green-400 shadow-lg">
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-green-400 shadow-lg">
                 <Image
                   src="/IMG_2320.jpeg"
                   alt="WhiteAsh BKK Logo"
@@ -738,7 +739,28 @@ export default function NewLocation() {
                 WhiteAsh BKK Store at Ekkamai
               </h1>
             </div>
+            <p className="text-lg sm:text-xl text-green-200">
+              {t.newLocationOpen}
+            </p>
           </div>
+          <div className="mt-4 relative w-full overflow-hidden rounded-[26px] border border-green-500/40 shadow-[0_25px_60px_rgba(34,197,94,0.35)] bg-black/80">
+            <video
+              src="/Sure_heres_a_202511120840_c7sbc.mp4"
+              poster="/PHOTO-2025-11-11-18-41-12.jpg"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              className="w-full aspect-[16/9] object-cover"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p className="mt-4 text-center text-green-200 text-sm sm:text-base">
+            {t.storeTourDescription}
+          </p>
+        </div>
 
         {/* Main Announcement Card */}
         <div 
@@ -789,29 +811,6 @@ export default function NewLocation() {
               }}
             >
               ✅ {t.nowOpen} ✅
-            </div>
-          </div>
-
-          {/* Store Tour Video */}
-          <div className="my-8">
-            <div className="mx-auto flex flex-col items-center text-center max-w-4xl px-3">
-              <h3 className="text-xl sm:text-2xl font-bold text-green-100 mb-2 drop-shadow-[0_0_12px_rgba(34,197,94,0.6)]">
-                {t.storeTourTitle}
-              </h3>
-              <p className="text-green-200 text-sm sm:text-base mb-4">
-                {t.storeTourDescription}
-              </p>
-              <div className="relative w-full overflow-hidden rounded-3xl border border-green-500/40 shadow-[0_20px_50px_rgba(34,197,94,0.35)] bg-black/80">
-                <video
-                  src="/Sure_heres_a_202511120840_c7sbc.mp4"
-                  poster="/PHOTO-2025-11-11-18-41-12.jpg"
-                  controls
-                  playsInline
-                  className="w-full aspect-[16/9] object-cover"
-                >
-                  Your browser does not support the video tag.
-                </video>
-              </div>
             </div>
           </div>
 
