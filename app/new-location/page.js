@@ -798,9 +798,6 @@ export default function NewLocation() {
               Your browser does not support the video tag.
             </video>
           </div>
-          <p className="mt-4 text-center text-green-200 text-sm sm:text-base">
-            {t.storeTourDescription}
-          </p>
         </div>
 
         {/* Premium Cannabis Flower Specialist Section - SEPARATE */}
