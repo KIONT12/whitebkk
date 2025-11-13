@@ -774,7 +774,7 @@ export default function NewLocation() {
           <div className="mt-4 relative w-full overflow-hidden rounded-[26px] border border-green-500/40 shadow-[0_25px_60px_rgba(34,197,94,0.35)] bg-black/80">
             <video
               ref={heroVideoRef}
-              src="/Sure_heres_a_202511120840_c7sbc.mp4"
+              src="/Sure_heres_a_202511120839_0vncv.mp4"
               poster="/PHOTO-2025-11-11-18-41-12.jpg"
               autoPlay
               loop
