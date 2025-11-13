@@ -786,7 +786,6 @@ export default function NewLocation() {
                 muted
                 playsInline
                 preload="auto"
-                controls
                 onLoadedData={() => setHeroVideoReady(true)}
                 onError={() => {
                   if (heroVideoSrc === "/Sure_heres_a_202511120840_c7sbc.mp4") {
