@@ -15,7 +15,7 @@ export default function NewLocation() {
   const [language, setLanguage] = useState('en'); // 'en', 'th', 'zh', 'ja', 'ko'
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [heroVideoReady, setHeroVideoReady] = useState(false);
-  const [heroVideoSrc, setHeroVideoSrc] = useState("/tyty.mp4");
+  const [heroVideoSrc, setHeroVideoSrc] = useState("/890.mp4");
   const heroVideoRef = useRef(null);
 
   // Ekkamai Location Photo Slideshow
