@@ -793,34 +793,38 @@ export default function NewLocation() {
           </div>
 
           {/* Store Tour Video */}
-          <div className="max-w-4xl mx-auto w-full mb-8">
-            <div className="bg-gradient-to-br from-green-900/60 via-black/60 to-green-950/70 border-2 border-green-500/60 rounded-[2rem] p-4 sm:p-6 shadow-[0_0_45px_rgba(34,197,94,0.35)]">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.3em] text-green-400 mb-1">🎥</p>
-                  <h3 className="text-xl sm:text-2xl font-bold text-green-100">
-                    {t.storeTourTitle}
-                  </h3>
-                </div>
-                <p className="text-green-200 text-xs sm:text-sm max-w-md">
-                  {t.storeTourDescription}
-                </p>
-              </div>
-              <div className="relative bg-gradient-to-br from-green-900 via-black to-green-900 rounded-[1.75rem] p-3 sm:p-4 shadow-inner">
-                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-24 h-2 rounded-full bg-green-500/60 blur-sm"></div>
-                <div className="absolute inset-x-10 -bottom-4 h-6 bg-black/60 rounded-b-[2rem] blur-sm"></div>
-                <video
-                  src="/Sure_heres_a_202511120840_c7sbc.mp4"
-                  poster="/PHOTO-2025-11-11-18-41-12.jpg"
-                  controls
-                  playsInline
-                  className="w-full rounded-[1.25rem] border-[6px] border-black/70 shadow-[0_15px_35px_rgba(0,0,0,0.45)] bg-black object-cover"
-                >
-                  Your browser does not support the video tag.
-                </video>
-                <div className="absolute left-6 right-6 bottom-2 flex justify-between opacity-60">
-                  <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                  <div className="w-4 h-4 bg-emerald-400 rounded-full"></div>
+          <div className="my-8">
+            <div className="mx-auto flex flex-col items-center text-center max-w-3xl px-2">
+              <h3 className="text-xl sm:text-2xl font-bold text-green-100 mb-2 drop-shadow-[0_0_12px_rgba(34,197,94,0.6)]">
+                {t.storeTourTitle}
+              </h3>
+              <p className="text-green-200 text-sm sm:text-base mb-4">
+                {t.storeTourDescription}
+              </p>
+              <div className="w-full">
+                <div className="relative rounded-[2.7rem] bg-gradient-to-br from-green-900 via-black to-green-900 p-3 sm:p-4 border border-green-500/50 shadow-[0_25px_70px_rgba(34,197,94,0.35)]">
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-24 h-3 rounded-full bg-green-400/60 blur-[2px]"></div>
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-36 h-4 rounded-full bg-black/70 border border-green-500/40"></div>
+                  <div className="absolute inset-x-10 -bottom-5 h-8 bg-black/70 rounded-[2rem] blur-md"></div>
+                  <div className="relative rounded-[1.9rem] bg-black border-[10px] border-black/80 overflow-hidden shadow-[0_20px_45px_rgba(0,0,0,0.6)]">
+                    <video
+                      src="/Sure_heres_a_202511120840_c7sbc.mp4"
+                      poster="/PHOTO-2025-11-11-18-41-12.jpg"
+                      controls
+                      playsInline
+                      className="w-full h-full object-cover"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div className="absolute left-6 bottom-3 flex gap-2 text-green-300 text-lg opacity-70">
+                    <span>●</span>
+                    <span>●</span>
+                    <span>●</span>
+                  </div>
+                  <div className="absolute right-6 bottom-3 text-green-200 text-xs opacity-70">
+                    4K HDR
+                  </div>
                 </div>
               </div>
             </div>
