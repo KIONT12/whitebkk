@@ -1214,14 +1214,14 @@ export default function NewLocation() {
 
         {/* Photo Slideshow */}
         <section className="mt-10 px-2 w-full">
-          <div className="max-w-4xl mx-auto w-full">
+          <div className="max-w-3xl mx-auto w-full">
             <div 
-              className="relative w-full rounded-2xl overflow-hidden border-3 border-green-500 shadow-2xl bg-black/60"
+              className="relative w-full rounded-2xl overflow-hidden border-2 border-green-500/70 shadow-[0_15px_35px_rgba(34,197,94,0.35)] bg-black/70"
               style={{
-                boxShadow: '0 0 30px rgba(34, 197, 94, 0.6), 0 0 60px rgba(34, 197, 94, 0.4)'
+                boxShadow: '0 0 24px rgba(34, 197, 94, 0.45), 0 0 40px rgba(34, 197, 94, 0.25)'
               }}
             >
-              <div className="relative aspect-video">
+              <div className="relative aspect-[16/9]">
                 <Image
                   src={slideshowImages[currentSlide]}
                   alt={`WhiteAsh BKK Lounge - Slide ${currentSlide + 1}`}
@@ -1236,9 +1236,9 @@ export default function NewLocation() {
 
               <button
                 onClick={prevSlide}
-                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-green-600 text-white p-3 rounded-full transition-all duration-300 border-2 border-green-500"
+                className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-green-600 text-white p-2 sm:p-2.5 rounded-full transition-all duration-300 border border-green-500/70"
                 style={{
-                  boxShadow: '0 0 20px rgba(34, 197, 94, 0.6)'
+                  boxShadow: '0 0 14px rgba(34, 197, 94, 0.5)'
                 }}
                 aria-label="Previous photo"
               >
@@ -1247,16 +1247,16 @@ export default function NewLocation() {
 
               <button
                 onClick={nextSlide}
-                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-green-600 text-white p-3 rounded-full transition-all duration-300 border-2 border-green-500"
+                className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-green-600 text-white p-2 sm:p-2.5 rounded-full transition-all duration-300 border border-green-500/70"
                 style={{
-                  boxShadow: '0 0 20px rgba(34, 197, 94, 0.6)'
+                  boxShadow: '0 0 14px rgba(34, 197, 94, 0.5)'
                 }}
                 aria-label="Next photo"
               >
                 →
               </button>
 
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2">
                 {slideshowImages.map((_, index) => (
                   <button
                     key={index}
