@@ -771,87 +771,83 @@ export default function NewLocation() {
               {t.newLocationOpen}
             </p>
           </div>
-          <div className="mt-4 relative w-full overflow-hidden rounded-[26px] border border-green-500/40 shadow-[0_25px_60px_rgba(34,197,94,0.35)] bg-black/80">
-            <video
-              ref={heroVideoRef}
-              src="/Sure_heres_a_202511120840_c7sbc.mp4"
-              poster="/PHOTO-2025-11-11-18-41-12.jpg"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              controls
-              onLoadedData={() => setHeroVideoReady(true)}
-              className={`w-full aspect-[16/9] object-cover transition-opacity duration-700 ease-out ${heroVideoReady ? 'opacity-100' : 'opacity-0'}`}
+          <div className="mt-4 w-full grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="relative overflow-hidden rounded-[26px] border border-green-500/40 shadow-[0_25px_60px_rgba(34,197,94,0.35)] bg-black/80">
+              <video
+                ref={heroVideoRef}
+                src="/Sure_heres_a_202511120840_c7sbc.mp4"
+                poster="/PHOTO-2025-11-11-18-41-12.jpg"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                controls
+                onLoadedData={() => setHeroVideoReady(true)}
+                className={`w-full aspect-[16/9] object-cover transition-opacity duration-700 ease-out ${heroVideoReady ? 'opacity-100' : 'opacity-0'}`}
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+            <div 
+              className="relative overflow-hidden rounded-[26px] border border-green-500/40 shadow-[0_25px_60px_rgba(34,197,94,0.35)] bg-black/80"
             >
-              Your browser does not support the video tag.
-            </video>
+              <div className="relative aspect-[16/9]">
+                <Image
+                  src={slideshowImages[currentSlide]}
+                  alt={`WhiteAsh BKK Lounge - Slide ${currentSlide + 1}`}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute top-3 right-3 bg-black/70 text-green-300 px-3 py-1 rounded-full text-xs font-bold">
+                  {currentSlide + 1} / {slideshowImages.length}
+                </div>
+              </div>
+
+              <button
+                onClick={prevSlide}
+                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-green-600 text-white p-3 rounded-full transition-all duration-300 border-2 border-green-500"
+                style={{
+                  boxShadow: '0 0 20px rgba(34, 197, 94, 0.6)'
+                }}
+                aria-label="Previous photo"
+              >
+                ←
+              </button>
+
+              <button
+                onClick={nextSlide}
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-green-600 text-white p-3 rounded-full transition-all duration-300 border-2 border-green-500"
+                style={{
+                  boxShadow: '0 0 20px rgba(34, 197, 94, 0.6)'
+                }}
+                aria-label="Next photo"
+              >
+                →
+              </button>
+
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {slideshowImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentSlide === index 
+                        ? 'bg-green-500 w-8' 
+                        : 'bg-white/50 hover:bg-white/80'
+                    }`}
+                    aria-label={`View photo ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
           <p className="mt-4 text-center text-green-200 text-sm sm:text-base">
             {t.storeTourDescription}
           </p>
         </div>
-
-        {/* Location Photo Slideshow */}
-        <section className="mt-8 mb-6 w-full max-w-5xl mx-auto px-1">
-          <div 
-            className="relative w-full rounded-2xl overflow-hidden border-3 border-green-500 shadow-2xl bg-black/60"
-            style={{
-              boxShadow: '0 0 30px rgba(34, 197, 94, 0.6), 0 0 60px rgba(34, 197, 94, 0.4)'
-            }}
-          >
-            <div className="relative aspect-video">
-              <Image
-                src={slideshowImages[currentSlide]}
-                alt={`WhiteAsh BKK Lounge - Slide ${currentSlide + 1}`}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute top-3 right-3 bg-black/70 text-green-300 px-3 py-1 rounded-full text-xs font-bold">
-                {currentSlide + 1} / {slideshowImages.length}
-              </div>
-            </div>
-
-            <button
-              onClick={prevSlide}
-              className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-green-600 text-white p-3 rounded-full transition-all duration-300 border-2 border-green-500"
-              style={{
-                boxShadow: '0 0 20px rgba(34, 197, 94, 0.6)'
-              }}
-              aria-label="Previous photo"
-            >
-              ←
-            </button>
-
-            <button
-              onClick={nextSlide}
-              className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-green-600 text-white p-3 rounded-full transition-all duration-300 border-2 border-green-500"
-              style={{
-                boxShadow: '0 0 20px rgba(34, 197, 94, 0.6)'
-              }}
-              aria-label="Next photo"
-            >
-              →
-            </button>
-
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-              {slideshowImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    currentSlide === index 
-                      ? 'bg-green-500 w-8' 
-                      : 'bg-white/50 hover:bg-white/80'
-                  }`}
-                  aria-label={`View photo ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Premium Cannabis Flower Specialist Section - SEPARATE */}
         <div className="max-w-5xl w-full mb-8">
