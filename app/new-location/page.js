@@ -15,7 +15,7 @@ export default function NewLocation() {
   const [language, setLanguage] = useState('en'); // 'en', 'th', 'zh', 'ja', 'ko'
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [heroVideoReady, setHeroVideoReady] = useState(false);
-  const [heroVideoSrc, setHeroVideoSrc] = useState("/890.mp4");
+  const [heroVideoError, setHeroVideoError] = useState(false);
   const heroVideoRef = useRef(null);
 
   // Ekkamai Location Photo Slideshow
@@ -259,6 +259,7 @@ export default function NewLocation() {
     if (!video) return;
 
     setHeroVideoReady(false);
+    setHeroVideoError(false);
 
     const ensurePlayback = () => {
       const playPromise = video.play();
@@ -280,7 +281,7 @@ export default function NewLocation() {
       video.removeEventListener("loadeddata", ensurePlayback);
       video.removeEventListener("canplay", ensurePlayback);
     };
-  }, [heroVideoSrc]);
+  }, []);
 
   return (
     <div 
@@ -776,9 +777,8 @@ export default function NewLocation() {
           </div>
           <div className="mt-4 relative w-full overflow-hidden rounded-[26px] border border-green-500/40 shadow-[0_25px_60px_rgba(34,197,94,0.35)] bg-black/80">
             <video
-              key={heroVideoSrc}
               ref={heroVideoRef}
-              src={heroVideoSrc}
+              src="/890.mp4"
               poster="/PHOTO-2025-11-11-18-41-12.jpg"
               autoPlay
               loop
@@ -787,16 +787,17 @@ export default function NewLocation() {
               preload="auto"
               controls
               onLoadedData={() => setHeroVideoReady(true)}
-              onError={() => {
-                if (heroVideoSrc !== "/Sure_heres_a_202511120840_c7sbc.mp4") {
-                  setHeroVideoSrc("/Sure_heres_a_202511120840_c7sbc.mp4");
-                }
-              }}
+              onError={() => setHeroVideoError(true)}
               className={`w-full aspect-[16/9] object-cover transition-opacity duration-700 ease-out ${heroVideoReady ? 'opacity-100' : 'opacity-0'}`}
             >
-              <source src={heroVideoSrc} type="video/mp4" />
+              <source src="/890.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            {heroVideoError && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/70 text-green-200 text-center text-sm sm:text-base px-6 rounded-[26px]">
+                Video coming soon. Please check back shortly.
+              </div>
+            )}
           </div>
         </div>
 
