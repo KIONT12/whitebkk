@@ -762,60 +762,6 @@ export default function NewLocation() {
           </p>
         </div>
 
-        {/* Main Announcement Card */}
-        <div 
-          className="max-w-2xl w-full bg-gradient-to-br from-green-900/40 to-emerald-950/40 backdrop-blur-sm border-3 border-green-500/60 rounded-2xl p-4 sm:p-6 lg:p-8 shadow-2xl mb-6"
-          style={{
-            boxShadow: '0 0 40px rgba(34, 197, 94, 0.4), inset 0 0 20px rgba(34, 197, 94, 0.05)'
-          }}
-        >
-          {/* Store Icon */}
-          <div 
-            className="text-5xl sm:text-6xl text-center mb-4"
-            style={{
-              filter: 'drop-shadow(0 0 30px rgba(34, 197, 94, 0.8))',
-              animation: 'bounce-slow 3s ease-in-out infinite'
-            }}
-          >
-            🏪
-          </div>
-
-          {/* Main Heading */}
-          <h2 
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center text-green-300 mb-4"
-            style={{
-              textShadow: '0 0 20px rgba(34, 197, 94, 0.8)',
-              animation: 'text-glow 2s ease-in-out infinite'
-            }}
-          >
-            🎉 {t.newLocationOpen} 🎉
-          </h2>
-
-          {/* Description */}
-          <div className="text-center mb-6">
-            <p className="text-lg sm:text-xl text-green-200 mb-3 font-medium">
-              {t.weveExpanded}
-            </p>
-            <p className="text-base text-green-300 mb-4">
-              {t.experiencePremium}
-            </p>
-          </div>
-
-          {/* NOW OPEN Badge */}
-          <div className="text-center mb-6">
-            <div 
-              className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-3 rounded-full text-xl sm:text-2xl font-black border-3 border-green-400"
-              style={{
-                boxShadow: '0 0 30px rgba(34, 197, 94, 0.8), 0 0 60px rgba(34, 197, 94, 0.6)',
-                animation: 'pulse-glow 2s ease-in-out infinite'
-              }}
-            >
-              ✅ {t.nowOpen} ✅
-            </div>
-          </div>
-
-        </div>
-
         {/* Premium Cannabis Flower Specialist Section - SEPARATE */}
         <div className="max-w-5xl w-full mb-8">
           <div className="bg-gradient-to-br from-green-900/40 to-emerald-950/40 backdrop-blur-sm border-3 border-green-500/60 rounded-2xl p-6 sm:p-8 shadow-2xl"
