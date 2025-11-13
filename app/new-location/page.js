@@ -794,7 +794,7 @@ export default function NewLocation() {
 
           {/* Store Tour Video */}
           <div className="my-8">
-            <div className="mx-auto flex flex-col items-center text-center max-w-3xl px-2">
+            <div className="mx-auto flex flex-col items-center text-center max-w-5xl px-3">
               <h3 className="text-xl sm:text-2xl font-bold text-green-100 mb-2 drop-shadow-[0_0_12px_rgba(34,197,94,0.6)]">
                 {t.storeTourTitle}
               </h3>
@@ -802,20 +802,22 @@ export default function NewLocation() {
                 {t.storeTourDescription}
               </p>
               <div className="w-full">
-                <div className="relative rounded-[2.7rem] bg-gradient-to-br from-green-900 via-black to-green-900 p-3 sm:p-4 border border-green-500/50 shadow-[0_25px_70px_rgba(34,197,94,0.35)]">
-                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-24 h-3 rounded-full bg-green-400/60 blur-[2px]"></div>
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-36 h-4 rounded-full bg-black/70 border border-green-500/40"></div>
-                  <div className="absolute inset-x-10 -bottom-5 h-8 bg-black/70 rounded-[2rem] blur-md"></div>
-                  <div className="relative rounded-[1.9rem] bg-black border-[10px] border-black/80 overflow-hidden shadow-[0_20px_45px_rgba(0,0,0,0.6)]">
-                    <video
-                      src="/Sure_heres_a_202511120840_c7sbc.mp4"
-                      poster="/PHOTO-2025-11-11-18-41-12.jpg"
-                      controls
-                      playsInline
-                      className="w-full h-full object-cover"
-                    >
-                      Your browser does not support the video tag.
-                    </video>
+                <div className="relative rounded-[2.3rem] bg-gradient-to-br from-green-900 via-black to-green-900 p-3 sm:p-4 border border-green-500/50 shadow-[0_20px_60px_rgba(34,197,94,0.35)]">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-3 rounded-full bg-green-400/60 blur-[1.5px]"></div>
+                  <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-32 h-3 rounded-full bg-black/70 border border-green-500/40"></div>
+                  <div className="absolute inset-x-14 -bottom-4 h-6 bg-black/70 rounded-[2rem] blur-md"></div>
+                  <div className="relative rounded-[1.6rem] bg-black border-[8px] border-black/80 overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.6)]">
+                    <div className="relative w-full aspect-[16/9]">
+                      <video
+                        src="/Sure_heres_a_202511120840_c7sbc.mp4"
+                        poster="/PHOTO-2025-11-11-18-41-12.jpg"
+                        controls
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover rounded-[1.2rem]"
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
                   </div>
                   <div className="absolute left-6 bottom-3 flex gap-2 text-green-300 text-lg opacity-70">
                     <span>●</span>
