@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,6 +14,8 @@ export default function NewLocation() {
   const [enlargedImage, setEnlargedImage] = useState(null);
   const [language, setLanguage] = useState('en'); // 'en', 'th', 'zh', 'ja', 'ko'
   const [showLangMenu, setShowLangMenu] = useState(false);
+  const [heroVideoReady, setHeroVideoReady] = useState(false);
+  const heroVideoRef = useRef(null);
 
   // Ekkamai Location Photo Slideshow
   const slideshowImages = [
@@ -250,6 +252,32 @@ export default function NewLocation() {
   const closeImage = () => {
     setEnlargedImage(null);
   };
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    const ensurePlayback = () => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          video.muted = true;
+          setTimeout(() => {
+            video.play().catch(() => {});
+          }, 150);
+        });
+      }
+    };
+
+    video.addEventListener("loadeddata", ensurePlayback);
+    video.addEventListener("canplay", ensurePlayback);
+    ensurePlayback();
+
+    return () => {
+      video.removeEventListener("loadeddata", ensurePlayback);
+      video.removeEventListener("canplay", ensurePlayback);
+    };
+  }, []);
 
   return (
     <div 
@@ -745,14 +773,17 @@ export default function NewLocation() {
           </div>
           <div className="mt-4 relative w-full overflow-hidden rounded-[26px] border border-green-500/40 shadow-[0_25px_60px_rgba(34,197,94,0.35)] bg-black/80">
             <video
+              ref={heroVideoRef}
               src="/Sure_heres_a_202511120840_c7sbc.mp4"
               poster="/PHOTO-2025-11-11-18-41-12.jpg"
               autoPlay
               loop
               muted
               playsInline
+              preload="auto"
               controls
-              className="w-full aspect-[16/9] object-cover"
+              onLoadedData={() => setHeroVideoReady(true)}
+              className={`w-full aspect-[16/9] object-cover transition-opacity duration-700 ease-out ${heroVideoReady ? 'opacity-100' : 'opacity-0'}`}
             >
               Your browser does not support the video tag.
             </video>
