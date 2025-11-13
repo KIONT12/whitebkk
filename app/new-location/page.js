@@ -284,7 +284,7 @@ export default function NewLocation() {
 
   return (
     <div 
-      className="bigparty-theme min-h-screen bg-black text-white overflow-hidden relative"
+      className="bigparty-theme min-h-[100dvh] bg-black text-white overflow-hidden relative"
       style={{ 
         fontFamily: "'Poppins', sans-serif",
         color: '#fff6d6',
@@ -745,11 +745,11 @@ export default function NewLocation() {
       )}
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 sm:pt-18 lg:pt-20">
+      <div className="relative z-10 min-h-[100dvh] flex flex-col items-center justify-start px-3 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-16">
         
         {/* Hero: Store Name + Looping Tour Video */}
-        <div className="w-full max-w-5xl mx-auto mb-10">
-          <div className="text-center flex flex-col items-center gap-4">
+        <div className="w-full max-w-full sm:max-w-5xl mx-auto mb-10 space-y-4 sm:space-y-6">
+          <div className="text-center flex flex-col items-center gap-3 sm:gap-4 px-2">
             <div className="flex items-center gap-3 sm:gap-4">
               <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-green-400 shadow-lg">
                 <Image
@@ -774,31 +774,33 @@ export default function NewLocation() {
               {t.newLocationOpen}
             </p>
           </div>
-          <div className="mt-4 relative w-full overflow-hidden rounded-[26px] border border-green-500/40 shadow-[0_25px_60px_rgba(34,197,94,0.35)] bg-black/80">
-            <video
-              key={heroVideoSrc}
-              ref={heroVideoRef}
-              src={heroVideoSrc}
-              poster="/PHOTO-2025-11-11-18-41-12.jpg"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              controls
-              onLoadedData={() => setHeroVideoReady(true)}
-              onError={() => {
-                if (heroVideoSrc === "/Sure_heres_a_202511120840_c7sbc.mp4") {
-                  setHeroVideoSrc("/ScreenRecording_11-11-2025 20-26-35_1.mov");
-                } else if (heroVideoSrc !== "/Sure_heres_a_202511120840_c7sbc.mp4") {
-                  setHeroVideoSrc("/Sure_heres_a_202511120840_c7sbc.mp4");
-                }
-              }}
-              className={`w-full aspect-[16/9] object-cover transition-opacity duration-700 ease-out ${heroVideoReady ? 'opacity-100' : 'opacity-0'}`}
-            >
-              <source src={heroVideoSrc} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          <div className="mt-4 sm:mt-6 relative w-full overflow-hidden rounded-2xl sm:rounded-[26px] border border-green-500/40 shadow-[0_18px_45px_rgba(34,197,94,0.35)] bg-black/80">
+            <div className="relative aspect-[16/9] sm:aspect-[16/9]">
+              <video
+                key={heroVideoSrc}
+                ref={heroVideoRef}
+                src={heroVideoSrc}
+                poster="/PHOTO-2025-11-11-18-41-12.jpg"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                controls
+                onLoadedData={() => setHeroVideoReady(true)}
+                onError={() => {
+                  if (heroVideoSrc === "/Sure_heres_a_202511120840_c7sbc.mp4") {
+                    setHeroVideoSrc("/ScreenRecording_11-11-2025 20-26-35_1.mov");
+                  } else if (heroVideoSrc !== "/Sure_heres_a_202511120840_c7sbc.mp4") {
+                    setHeroVideoSrc("/Sure_heres_a_202511120840_c7sbc.mp4");
+                  }
+                }}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out ${heroVideoReady ? 'opacity-100' : 'opacity-0'}`}
+              >
+                <source src={heroVideoSrc} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </div>
 
@@ -819,13 +821,13 @@ export default function NewLocation() {
             </h3>
             
             {/* Product Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-4 lg:gap-5">
               
               {/* Product Card 1 - Super Boof */}
                 <div className="product-card group bg-green-950/30 border-2 border-green-600/50 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 focus-within:ring-2 focus-within:ring-green-400 focus-within:ring-offset-2 focus-within:ring-offset-black">
                 {/* Product Image - BIGGER */}
                  <div
-                   className="relative h-64 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
+                   className="relative h-56 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
                    onClick={() => openImage("/IMG_2357.jpeg", "Super Boof")}
                    role="button"
                    tabIndex={0}
@@ -869,7 +871,7 @@ export default function NewLocation() {
                <div className="product-card group bg-green-950/30 border-2 border-green-600/50 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 focus-within:ring-2 focus-within:ring-green-400 focus-within:ring-offset-2 focus-within:ring-offset-black">
                 {/* Product Image - BIGGER */}
                  <div
-                   className="relative h-64 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
+                   className="relative h-56 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
                    onClick={() => openImage("/IMG_2359.jpeg", "Ice Cream Cake")}
                    role="button"
                    tabIndex={0}
@@ -913,7 +915,7 @@ export default function NewLocation() {
                <div className="product-card group bg-green-950/30 border-2 border-green-600/50 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 focus-within:ring-2 focus-within:ring-green-400 focus-within:ring-offset-2 focus-within:ring-offset-black">
                 {/* Product Image - BIGGER */}
                  <div
-                   className="relative h-64 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
+                   className="relative h-56 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
                    onClick={() => openImage("/IMG_2360.jpeg", "Ice Cherry Gelato")}
                    role="button"
                    tabIndex={0}
@@ -957,7 +959,7 @@ export default function NewLocation() {
                <div className="product-card group bg-green-950/30 border-2 border-green-600/50 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 focus-within:ring-2 focus-within:ring-green-400 focus-within:ring-offset-2 focus-within:ring-offset-black">
                 {/* Product Image - BIGGER */}
                  <div
-                   className="relative h-64 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
+                   className="relative h-56 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
                    onClick={() => openImage("/IMG_2361.jpeg", "La Rose")}
                    role="button"
                    tabIndex={0}
@@ -1001,7 +1003,7 @@ export default function NewLocation() {
                <div className="product-card group bg-green-950/30 border-2 border-green-600/50 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 focus-within:ring-2 focus-within:ring-green-400 focus-within:ring-offset-2 focus-within:ring-offset-black">
                 {/* Product Image - BIGGER */}
                  <div
-                   className="relative h-64 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
+                   className="relative h-56 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
                    onClick={() => openImage("/IMG_2363.jpeg", "Black Runtz")}
                    role="button"
                    tabIndex={0}
@@ -1045,7 +1047,7 @@ export default function NewLocation() {
                <div className="product-card group bg-green-950/30 border-2 border-green-600/50 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 focus-within:ring-2 focus-within:ring-green-400 focus-within:ring-offset-2 focus-within:ring-offset-black">
                 {/* Product Image - BIGGER */}
                  <div
-                   className="relative h-64 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
+                   className="relative h-56 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
                    onClick={() => openImage("/IMG_2364.jpeg", "Gorilla Glue")}
                    role="button"
                    tabIndex={0}
@@ -1089,7 +1091,7 @@ export default function NewLocation() {
                <div className="product-card group bg-green-950/30 border-2 border-green-600/50 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 focus-within:ring-2 focus-within:ring-green-400 focus-within:ring-offset-2 focus-within:ring-offset-black">
                 {/* Product Image - BIGGER */}
                  <div
-                   className="relative h-64 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
+                   className="relative h-56 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
                    onClick={() => openImage("/IMG_2365.jpg", "Tropicana Cherry")}
                    role="button"
                    tabIndex={0}
@@ -1133,7 +1135,7 @@ export default function NewLocation() {
                <div className="product-card group bg-green-950/30 border-2 border-green-600/50 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300 focus-within:ring-2 focus-within:ring-green-400 focus-within:ring-offset-2 focus-within:ring-offset-black">
                 {/* Product Image - BIGGER */}
                  <div
-                   className="relative h-64 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
+                   className="relative h-56 sm:h-72 w-full overflow-hidden bg-black/40 cursor-zoom-in focus:outline-none"
                    onClick={() => openImage("/IMG_2366.jpeg", "White Truffle")}
                    role="button"
                    tabIndex={0}
