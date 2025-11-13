@@ -15,6 +15,7 @@ export default function NewLocation() {
   const [language, setLanguage] = useState('en'); // 'en', 'th', 'zh', 'ja', 'ko'
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [heroVideoReady, setHeroVideoReady] = useState(false);
+  const [heroVideoSrc, setHeroVideoSrc] = useState("/tyty.mp4");
   const heroVideoRef = useRef(null);
 
   // Ekkamai Location Photo Slideshow
@@ -257,6 +258,8 @@ export default function NewLocation() {
     const video = heroVideoRef.current;
     if (!video) return;
 
+    setHeroVideoReady(false);
+
     const ensurePlayback = () => {
       const playPromise = video.play();
       if (playPromise !== undefined) {
@@ -277,7 +280,7 @@ export default function NewLocation() {
       video.removeEventListener("loadeddata", ensurePlayback);
       video.removeEventListener("canplay", ensurePlayback);
     };
-  }, []);
+  }, [heroVideoSrc]);
 
   return (
     <div 
@@ -773,8 +776,9 @@ export default function NewLocation() {
           </div>
           <div className="mt-4 relative w-full overflow-hidden rounded-[26px] border border-green-500/40 shadow-[0_25px_60px_rgba(34,197,94,0.35)] bg-black/80">
             <video
+              key={heroVideoSrc}
               ref={heroVideoRef}
-              src="/tyty.mp4"
+              src={heroVideoSrc}
               poster="/PHOTO-2025-11-11-18-41-12.jpg"
               autoPlay
               loop
@@ -783,8 +787,14 @@ export default function NewLocation() {
               preload="auto"
               controls
               onLoadedData={() => setHeroVideoReady(true)}
+              onError={() => {
+                if (heroVideoSrc !== "/Sure_heres_a_202511120840_c7sbc.mp4") {
+                  setHeroVideoSrc("/Sure_heres_a_202511120840_c7sbc.mp4");
+                }
+              }}
               className={`w-full aspect-[16/9] object-cover transition-opacity duration-700 ease-out ${heroVideoReady ? 'opacity-100' : 'opacity-0'}`}
             >
+              <source src={heroVideoSrc} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
